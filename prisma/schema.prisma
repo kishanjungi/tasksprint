@@ -72,3 +72,17 @@ enum Difficulty {
   MEDIUM
   HARD
 }
+
+model QuizAttempt {
+  id         String   @id @default(cuid())
+
+  score      Int
+  total      Int
+
+  userId     String
+  user       User @relation(fields: [userId], references: [id])
+
+  categoryId String
+
+  createdAt  DateTime @default(now())
+}
